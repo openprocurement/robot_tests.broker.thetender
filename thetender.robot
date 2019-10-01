@@ -590,6 +590,12 @@ Login
   Натиснути    id=auction-1-update-btn
   Input text    id=lotauctions-tenderingduration    ${auction.tenderingDuration}
   Натиснути    id=save-btn
+  Натиснути    id=lot-upload-btn
+  Select from list by value    id=files-type    clarifications
+  ${filepath}=    get_upload_file_path
+  Choose file    id=files-file    ${filepath}
+  Натиснути    id=upload-btn
+  Sleep    2
   Натиснути    id=verification-btn
 
 Отримати інформацію з активу лоту
@@ -803,7 +809,7 @@ Login
 Оновити сторінку з тендером
     [Arguments]    ${username}    ${tender_uaid}
     Натиснути    id=auctions-list
-    Input text    id=auctionssearch-main_search    ${tender_uaid}
+    Input text    id=main_search    ${tender_uaid}
     Неквапливо натиснути    id=public-search-btn
     Неквапливо натиснути    id=refresh-btn
 
@@ -1116,6 +1122,7 @@ Login
     Натиснути    id=upload-contract-link
     ${filepath}=    get_upload_file_path
     Choose file    id=files-file    ${filepath}
+    Select from list by value    id=files-type    contractSigned
     Натиснути    id=upload-contract-btn
     Sleep    1
 
